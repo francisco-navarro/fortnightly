@@ -1,18 +1,42 @@
 // 5c5662 - gris oscuro
 // bbc0c0 - gris claro
 // fff7f1 - blanco
-// 77cfa0 - verde claro
-// 5ca67f - verde oscuro
+// 7da941 - verde claro
+// 204800 - verde oscuro
+
 
 .fondo {
    background-color: #fff7f1;
 }
 
-div .header {
-    background-color: #0e0e0e;
-    color: #4bb1cf;
-    height: 10%;
+.header {
+   background-color: #489020;
+   color: #bbc0c0;
+   font-size: 3.5em;
+   padding-left: 30px;
 }
+
+.hb {
+    font-size: 0.5em;
+}
+
+.header-bottom1 {
+    width: 25%;
+}
+.header-bottom2 {
+    width: 25%;
+}
+.header-bottom3 {
+    width: 25%;
+}
+.header-bottom4 {
+    width: 25%;
+}
+
+.ico {
+
+}
+
 
 .classification-list {
     list-style: none;
@@ -23,16 +47,17 @@ div .header {
 table{
     width: 100%;
     padding: 10px;
-    border-spacing:5px;
-    text-align: center;
 }
 
 .widgets-spacing {
     padding: 10px;
 }
 
+.position{
+    margin-right: 15px;
+}
 
 .class-title{
-    text-align: center;
+
     background: cadetblue;
 }
