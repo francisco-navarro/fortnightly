@@ -5,7 +5,6 @@
         function dashboardClassificationCtrl(TeamService) {
             var self = this;
             TeamService.getClassification().then(function(response){
-               debugger;
                self.teams = response;
              });
         }
