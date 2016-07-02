@@ -11,7 +11,7 @@
         }
 
         function getClassification() {
-            return $http.get('http://pakonatsrv.mooo.com:8080/fortnightly/competitions/1/teams').then(function (data) {
+            return $http.get('services/competitions/1/teams').then(function (data) {
                 return data.data;
             })
         }
