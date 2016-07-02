@@ -4,7 +4,11 @@
 <mapper namespace="es.fortnightly.back.resources.persistence.TeamMapper">
 
 	<select id="list" resultType="es.fortnightly.back.resources.Team" parameterType="Long">
-		SELECT  T.NAME,T.TEAM_ID,POSITION_ID,POINTS FROM POSITION P 
+		SELECT  T.NAME as nombre,
+			T.TEAM_ID as id,
+			POSITION_ID as position,
+			POINTS  
+		FROM POSITION P 
 			INNER JOIN LEAGUE L ON P.LEAGUE_ID=L.LEAGUE_ID AND P.`DAY` = L.CURRENT_DAY
 			INNER JOIN TEAM T ON T.TEAM_ID=P.TEAM_ID
 			WHERE L.LEAGUE_ID=#{id}
