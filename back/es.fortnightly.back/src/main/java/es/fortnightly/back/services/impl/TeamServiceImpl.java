@@ -9,7 +9,7 @@ import es.fortnightly.back.resources.Team;
 import es.fortnightly.back.resources.persistence.TeamMapper;
 import es.fortnightly.back.services.TeamService;
 
-@Service("sectionService")
+@Service("teamService")
 public class TeamServiceImpl implements TeamService {
 	
 	private TeamMapper teamMapper;

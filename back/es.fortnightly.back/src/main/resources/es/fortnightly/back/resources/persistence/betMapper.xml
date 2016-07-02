@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.fortnightly.back.resources.persistence.BetMapper">
+
+	<select id="list" resultType="es.fortnightly.back.resources.Bet" parameterType="java.util.Map">
+		SELECT B.BET_ID,B.MATCH_ID,B.USER_ID,B.SCORE1,B.SCORE2,B.MATCH_RESULT,B.QUANTITY
+			FROM BET B INNER JOIN `MATCH` M ON B.MATCH_ID=M.MATCH_ID AND M.MATCH_ID>CURRENT_TIMESTAMP
+			WHERE USER_ID=#{id}
+		ORDER BY BET_ID DESC
+	</select>
+	
+	<insert id="add" parameterType="es.fortnightly.back.resources.Bet">
+		insert into BET 
+			(MATCH_ID,USER_ID,SCORE1,SCORE2,MATCH_RESULT,QUANTITY) 
+		values 
+			(#matchId#, #userId#, #score1#, #score2#, #matchResult#, #quantity#);
+	</insert>
+
+</mapper>
