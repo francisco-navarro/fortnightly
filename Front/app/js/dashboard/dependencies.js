@@ -13,7 +13,6 @@
             templateUrl: 'html/dashboard/index.html'
         };
 
-        $urlRouterProvider.otherwise(state);
         $stateProvider.state(state, config);
 
     });
