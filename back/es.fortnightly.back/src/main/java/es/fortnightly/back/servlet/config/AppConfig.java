@@ -60,7 +60,7 @@ public class AppConfig extends WebMvcConfigurationSupport {
 	}
 
 	private DataSource getDatasource() {
-		String resource = "jdbc/commodities";
+		String resource = "jdbc/fort";
 		Context initContext;
 		try {
 			initContext = new InitialContext();
@@ -82,7 +82,7 @@ public class AppConfig extends WebMvcConfigurationSupport {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setTypeAliasesPackage("es.forthnightly.back.resources");
-		sessionFactory.setMapperLocations(resourcePatternResolver.getResources("classpath:es/forthnightly/back/resources/persistence/*Mapper.xml"));
+		sessionFactory.setMapperLocations(resourcePatternResolver.getResources("classpath:es/fortnightly/back/resources/persistence/*Mapper.xml"));
 		
 		return sessionFactory;
 	}
