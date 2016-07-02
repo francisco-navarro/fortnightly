@@ -13,15 +13,14 @@ div .header {
 table{
     width: 100%;
     padding: 10px;
+    border-spacing:5px;
+    text-align: center;
 }
 
 .widgets-spacing {
     padding: 10px;
 }
 
-.position{
-    margin-right: 15px;
-}
 
 .class-title{
     text-align: center;
