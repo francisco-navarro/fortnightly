@@ -16,16 +16,10 @@ public class TeamSerializer extends JsonSerializer<Team> {
 			throws IOException, JsonProcessingException {
 		jgen.writeStartObject();
 	    jgen.writeStringField("id", ""+ team.getId());
-	    jgen.writeStringField("name", ""+ team.getNombre());
-	    jgen.writeStringField("position", ""+ team.getNombre());
-	    jgen.writeStringField("points", ""+ team.getNombre());
+	    jgen.writeStringField("name", team.getNombre());
+	    jgen.writeStringField("position", ""+ team.getPosition());
+	    jgen.writeStringField("points", ""+ team.getPoints());
 	    
-//	    jgen.writeArrayFieldStart("data");
-//	    for(Value value : item.getData()){
-//	    	jgen.writeStartObject();
-//	    	writeElement(jgen, value); 
-//	    	jgen.writeEndObject();
-//	    }
 	    jgen.writeEndArray();
 	    jgen.writeEndObject();
 		

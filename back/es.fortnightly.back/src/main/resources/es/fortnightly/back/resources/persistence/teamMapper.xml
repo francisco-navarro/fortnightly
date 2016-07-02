@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.fortnightly.back.resources.persistence.TeamMapper">
+
+	<select id="list" resultType="es.fortnightly.back.resources.Team" parameterType="Long">
+		SELECT  T.NAME,T.TEAM_ID,POSITION_ID,POINTS FROM POSITION P 
+			INNER JOIN LEAGUE L ON P.LEAGUE_ID=L.LEAGUE_ID AND P.`DAY` = L.CURRENT_DAY
+			INNER JOIN TEAM T ON T.TEAM_ID=P.TEAM_ID
+			WHERE L.LEAGUE_ID=#{id}
+		ORDER BY POSITION_ID ASC
+	</select>
+	
+
+</mapper>
