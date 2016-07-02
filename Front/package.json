@@ -57,5 +57,8 @@
     "svn-project-root": "^0.1.0",
     "wiredep": "2.2.2",
     "yargs": "^4.7.1"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
   }
 }
