@@ -11,11 +11,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
-import es.fortnightly.back.resources.persistence.MyMapper;
+import es.fortnightly.back.resources.persistence.UserMapper;
 
 
 @Configuration
-@MapperScan(basePackageClasses = { MyMapper.class } )
+@MapperScan(basePackageClasses = { UserMapper.class } )
 public class MyBatisConfig {
 
     @Autowired

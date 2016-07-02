@@ -14,7 +14,7 @@
 		insert into BET 
 			(MATCH_ID,USER_ID,SCORE1,SCORE2,MATCH_RESULT,QUANTITY) 
 		values 
-			(#matchId#, #userId#, #score1#, #score2#, #matchResult#, #quantity#);
+			(#{matchId}, #{userId}, #{score1}, #{score2}, #{matchResult}, #{quantity})
 	</insert>
 
 </mapper>
