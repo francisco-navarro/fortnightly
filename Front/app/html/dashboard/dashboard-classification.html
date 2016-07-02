@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<div>
+    <h1 class="class-title">Clasificación</h1>
+    <table flex>
+        <tr ng-repeat="team in $ctrl.teams">
+            <td>{{team.position}}</td>
+            <td>{{team.name}}</td>
+            <td>{{team.points}}</td>
+        </tr>
+    </table>
+</div>
