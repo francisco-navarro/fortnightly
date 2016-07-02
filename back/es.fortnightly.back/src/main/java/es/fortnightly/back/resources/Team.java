@@ -11,6 +11,15 @@ public class Team implements Serializable {
 	
 	private long id;
 	private String nombre;
+	private int position;
+	private int points;
+	
+	public int getPosition() {
+		return position;
+	}
+	public void setPosition(int position) {
+		this.position = position;
+	}
 	public long getId() {
 		return id;
 	}
@@ -22,6 +31,12 @@ public class Team implements Serializable {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public int getPoints() {
+		return points;
+	}
+	public void setPoints(int points) {
+		this.points = points;
 	}
 	
 	

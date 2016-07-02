@@ -15,7 +15,11 @@ public class TeamSerializer extends JsonSerializer<Team> {
 	public void serialize(Team team, JsonGenerator jgen, SerializerProvider provider)
 			throws IOException, JsonProcessingException {
 		jgen.writeStartObject();
-	    jgen.writeStringField("name", team.getNombre());
+	    jgen.writeStringField("id", ""+ team.getId());
+	    jgen.writeStringField("name", ""+ team.getNombre());
+	    jgen.writeStringField("position", ""+ team.getNombre());
+	    jgen.writeStringField("points", ""+ team.getNombre());
+	    
 //	    jgen.writeArrayFieldStart("data");
 //	    for(Value value : item.getData()){
 //	    	jgen.writeStartObject();
