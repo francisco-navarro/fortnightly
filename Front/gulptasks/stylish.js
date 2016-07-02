@@ -11,12 +11,10 @@ const del = require('del');
 const rev = require('gulp-rev');
 const revReplace = require('gulp-rev-replace');
 const replace = require('gulp-regex-replace');
-const extendJSON = require('gulp-extend');
 const rename = require('gulp-rename');
 const ngAnnotate = require('gulp-ng-annotate');
 const templateCache = require('gulp-angular-templatecache');
 const inject = require('gulp-inject');
-const currentDir = process.cwd();
 const wiredep = require('wiredep').stream;
 const angularFilesort = require('gulp-angular-filesort');
 const htmlmin = require('gulp-htmlmin');
@@ -34,8 +32,7 @@ module.exports = function (gulp, conf, globOptions) {
 
     /******* INDEX TASKS *******/
 
-    //TODO maybe --minify should change to --production,
-    gulp.task('copy-index', ['wiredep-html', 'inject-js', 'clean-index', 'clean-js', 'clean-css'], function () {
+    gulp.task('copy-index', ['wiredep-html', 'inject-js', 'inject-css', 'clean-index', 'clean-js', 'clean-css'], function () {
         var assets = useref.assets();
 
         var task = gulp.src('index.html', globOptions)
@@ -66,8 +63,6 @@ module.exports = function (gulp, conf, globOptions) {
     gulp.task('wiredep-html', function () {
         return gulp.src('index.html')
             .pipe(wiredep({
-                bowerJson: 'bower.json',
-                directory: 'bower_components',
                 dependencies: true
             }))
             .pipe(gulp.dest(''));
@@ -85,7 +80,11 @@ module.exports = function (gulp, conf, globOptions) {
             .pipe(gulp.dest(''));
     });
 
-    // TODO htmlMin dont work
+    gulp.task('inject-css', function () {
+        return gulp.src('index.html').pipe(inject(gulp.src(['app/css/**/*.css'], {read: false})))
+            .pipe(gulp.dest(''));
+    });
+
     gulp.task('create-templates', function () {
         return gulp.src('app/html/**/*.html')
         //.pipe(htmlmin({}))
@@ -96,9 +95,8 @@ module.exports = function (gulp, conf, globOptions) {
                 moduleSystem: 'IIFE'
             }))
             .pipe(uglify())
-            .pipe(gulp.dest('app/js'));
+            .pipe(gulp.dest('app/js/core/'));
     });
-
 
 
     /******* CLEAN TASKS *******/
