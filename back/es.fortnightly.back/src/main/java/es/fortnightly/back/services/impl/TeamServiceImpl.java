@@ -23,8 +23,8 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public List<Team> list(Integer id) {
-		 teamMapper.list(id);
-		 return null;
+		
+		 return  teamMapper.list(id);
 	}
 
 
