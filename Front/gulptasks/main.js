@@ -1,21 +1,15 @@
 /******* MAIN TASKS *******/
 
 
-module.exports = function(gulp, conf, globOptions) {
+module.exports = function (gulp, globOptions) {
 
-  'use strict';
+    'use strict';
 
-  // Sub-tasks
-  require('./vetFiles')(gulp, conf, globOptions);
-  require('./utils')(gulp, conf, globOptions);
-  require('./stylish')(gulp, conf, globOptions);
+    // Sub-tasks
 
-  // Task that show all the task available
-  gulp.task('default',['help']);  
+    require('./stylish')(gulp, globOptions);
 
-  gulp.task('build', ['buildIndex', 'buildCss', 'buildFiles']);
+    gulp.task('build', ['buildIndex']);
 
-  //TODO this task should change his name to vet(change all jenkins FRONT jobs)
-  gulp.task('ci', ['jshint-src', 'jshint-test', 'htmlhint-src', 'test']);
 
 };
