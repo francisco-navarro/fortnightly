@@ -12,6 +12,7 @@
             getUserMoney: getUserMoney,
             getUser: getUser
         }
+
         (function () {
             getUser($rootScope.userName);
         })();

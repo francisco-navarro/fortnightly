@@ -1,9 +1,10 @@
-var express = require('express');
-var proxy = require('express-http-proxy');
+const  express = require('express');
+const  proxy = require('express-http-proxy');
+
 
 var app = express();
 
-app.use('/', express.static('./dist/'));
+app.use('/', express.static('./src/'));
 
 app.use('/services/',
 	proxy('http://pakonatsrv.mooo.com/', {
@@ -17,5 +18,5 @@ app.use('/services/',
 	})
 );
 
-
 app.listen(9001);
+

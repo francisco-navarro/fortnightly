@@ -8,6 +8,7 @@ module.exports = function (gulp, globOptions) {
     // Sub-tasks
 
     require('./stylish')(gulp, globOptions);
+    require('./utils')(gulp, globOptions);
 
     gulp.task('build', ['buildIndex']);
 

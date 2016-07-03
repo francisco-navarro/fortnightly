@@ -19,13 +19,13 @@ const wiredep = require('wiredep').stream;
 const angularFilesort = require('gulp-angular-filesort');
 const htmlmin = require('gulp-htmlmin');
 
-module.exports = function (gulp, conf, globOptions) {
+module.exports = function (gulp, globOptions) {
 
     'use strict';
 
     /******* MAIN TASKS *******/
 
-    gulp.task('buildIndex', ['copy-index']);
+    gulp.task('buildIndex', ['copy-index', 'copy-img']);
 
 
     gulp.task('clean', ['clean-css', 'clean-js', 'clean-images', 'clean-locales', 'clean-static', 'clean-index', 'clean-jstree-images']);
@@ -35,7 +35,7 @@ module.exports = function (gulp, conf, globOptions) {
     gulp.task('copy-index', ['wiredep-html', 'inject-js', 'inject-css', 'clean-index', 'clean-js', 'clean-css'], function () {
         var assets = useref.assets();
 
-        var task = gulp.src('index.html', globOptions)
+        var task = gulp.src('src/index.html', globOptions)
             .pipe(assets)
             //.pipe(gulpif('**/lib.js', ngAnnotate()))
             .pipe(gulpif('**/combined-min.js', ngAnnotate()));
@@ -61,32 +61,32 @@ module.exports = function (gulp, conf, globOptions) {
     });
 
     gulp.task('wiredep-html', function () {
-        return gulp.src('index.html')
+        return gulp.src('src/index.html')
             .pipe(wiredep({
                 dependencies: true
             }))
-            .pipe(gulp.dest(''));
+            .pipe(gulp.dest('src/'));
 
     });
 
 
     gulp.task('inject-js', ['create-templates'], function () {
-        return gulp.src('index.html')
+        return gulp.src('src/index.html')
             .pipe(inject(
-                gulp.src(['app/js/**/*.js']).pipe(angularFilesort()).pipe(angularFilesort()), {
+                gulp.src(['src/app/js/**/*.js']).pipe(angularFilesort()).pipe(angularFilesort()), {
                     relative: true
                 }
             ))
-            .pipe(gulp.dest(''));
+            .pipe(gulp.dest('src/'));
     });
 
     gulp.task('inject-css', function () {
         return gulp.src('index.html').pipe(inject(gulp.src(['app/css/**/*.css'], {read: false})))
-            .pipe(gulp.dest(''));
+            .pipe(gulp.dest('src/'));
     });
 
     gulp.task('create-templates', function () {
-        return gulp.src('app/html/**/*.html')
+        return gulp.src('src/app/html/**/*.html')
         //.pipe(htmlmin({}))
             .pipe(templateCache('app-core-templates.js', {
                 root: 'html',
@@ -95,7 +95,12 @@ module.exports = function (gulp, conf, globOptions) {
                 moduleSystem: 'IIFE'
             }))
             .pipe(uglify())
-            .pipe(gulp.dest('app/js/core/'));
+            .pipe(gulp.dest('src/app/js/core/'));
+    });
+
+    gulp.task('copy-img', ['clean-img'], function () {
+        return gulp.src('src/app/img/**/*.{gif,jpg,png,svg,ico}')
+            .pipe(gulp.dest('dist/img'));
     });
 
 
@@ -112,5 +117,10 @@ module.exports = function (gulp, conf, globOptions) {
     gulp.task('clean-index', function () {
         del.sync('dist/index.html');
     });
+
+    gulp.task('clean-img', function () {
+        del.sync('dist/img');
+    });
+
 
 };
