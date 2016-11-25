@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.fortnightly.back.resources.persistence.UserMapper">
+
+	<select id="getUser" resultType="es.fortnightly.back.resources.User" parameterType="java.util.Map">
+		select USER_NAME as username,EMAIL,VIRTUAL_AMOUNT as VirtualAmount,REAL_AMOUNT RealAmount 
+			from USER
+			WHERE USER_NAME=#{username}
+	</select>
+	
+
+</mapper>

@@ -22,7 +22,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import es.fortnightly.back.controller.TeamController;
-import es.fortnightly.back.resources.persistence.MyMapper;
+import es.fortnightly.back.resources.persistence.UserMapper;
 import es.fortnightly.back.services.TeamService;
 
 
@@ -31,7 +31,7 @@ import es.fortnightly.back.services.TeamService;
 		 TeamController.class,
 		 TeamService.class
 }) 
-@MapperScan(basePackageClasses = { MyMapper.class } )
+@MapperScan(basePackageClasses = { UserMapper.class } )
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurationSupport {
 	
