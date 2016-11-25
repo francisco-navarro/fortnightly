@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="es.fortnightly.back.resources.persistence.MatchMapper">
+
+	<select id="list" resultType="es.fortnightly.back.resources.Match" parameterType="java.util.Map">
+		select T1.NAME home,
+			T1.TEAM_ID idHome,
+			M.SCORE_1 score1,
+			T2.NAME NAME_2,
+			T2.TEAM_ID ID_2,
+			M.SCORE_2,
+			M.`DATE` FECHA
+			from `MATCH` M
+			INNER JOIN LEAGUE L ON M.LEAGUE_ID=L.LEAGUE_ID
+			INNER JOIN TEAM T1 ON T1.TEAM_ID=M.TEAM1_ID
+			INNER JOIN TEAM T2 ON T2.TEAM_ID=M.TEAM2_ID
+			where
+		M.LEAGUE_ID=#{id}
+		AND M.`DAY`=#{round}
+	</select>
+	
+
+</mapper>
