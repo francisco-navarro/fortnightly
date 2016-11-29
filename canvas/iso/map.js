@@ -1,7 +1,6 @@
 /* eslint no-magic-numbers: 0 */
 app.map = function(height, width) {
   'use strict';
-  var map = this;
   var SQUARE_SIZE = 32;
   var _60 = Math.PI / 3;
   var _30 = Math.PI / 6;
@@ -10,19 +9,18 @@ app.map = function(height, width) {
 
   function init(n, m) {
     //Create a map of n*m positions
-    map.offsetX = 300;
-    map.offsetY = 300;
-    map.height = n;
-    map.width = m;
+    app.conf = {
+      offsetX: -300,
+      offsetY: 300,
+      height: n,
+      width: m,
+      SQUARE_SIZE: SQUARE_SIZE
+    };
 
     for(var i = 0; i < n; i++) {
       for(var j = 0; j < m; j++) {
-        //http://gamedev.stackexchange.com/questions/34787/how-to-convert-mouse-coordinates-to-isometric-indexes
-        // var x = i * SQUARE_SIZE/2 - j * SQUARE_SIZE/2 + offsetX;
-        // var y = i * SQUARE_HEIGHT + j * SQUARE_HEIGHT + offsetY;
-        //mesh(x, y);
-        var x = i * SQUARE_SIZE - map.offsetX;
-        var y = j * SQUARE_SIZE + map.offsetY;
+        var x = i * SQUARE_SIZE + app.conf.offsetX;
+        var y = j * SQUARE_SIZE + app.conf.offsetY;
         mesh(x, y);
         coordText(x + SQUARE_SIZE/2, y + SQUARE_SIZE/2, i, j);
         //http://www.alcove-games.com/advanced-tutorials/isometric-tile-picking/
@@ -51,5 +49,4 @@ app.map = function(height, width) {
   }
 
   init(height, width);
-  map.SQUARE_SIZE = SQUARE_SIZE;
 };
