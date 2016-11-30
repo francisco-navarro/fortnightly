@@ -39,7 +39,7 @@ app.map = function(height, width) {
     app.ctx.strokeStyle = '#19343A';
     app.ctx.stroke();
     app.ctx.fillStyle = 'rgba(161, 212, 144, 0.4)';
-    // app.ctx.fill();
+    app.ctx.fill();
   }
 
   function coordText(carX, carY, n, m){
