@@ -2,6 +2,7 @@ var app = {
   draw: function() {
     'use strict';
     var canvas = document.getElementById('map');
+    canvas.addEventListener('click', clicked, false);
 
     if (canvas.getContext) {
       app.ctx = canvas.getContext('2d');
@@ -13,12 +14,18 @@ var app = {
     } else {
       console.warn('canvas not compatible');
     }
+
+    function clicked(ev){
+      var rect = canvas.getBoundingClientRect();
+      var isoC = getMousePos(canvas, ev);
+      console.log(app.getIsoCell(isoC.x, isoC.y));
+    }
   }
 };
 
 function initComponents(){
   app.map(9, 9);
-  app.scenery();
+  app.scenery.init();
 }
 
 function isoDrawUtils(){
@@ -34,7 +41,18 @@ function isoDrawUtils(){
       var isoY = (carY - carX) / 2.0;
       app.ctx.moveTo(isoX, isoY);
     };
+    app.getIsoCell = function(isoX, isoY) {
+      var carX = (isoX - (isoY + app.conf.offsetX) * 2.0) / (app.conf.SQUARE_SIZE * 2);
+      var carY = (isoX + (isoY - app.conf.offsetY) * 2.0) / (app.conf.SQUARE_SIZE * 2);
+
+      return {
+        x: parseInt(carX, 10),
+        y: parseInt(carY, 10)
+      };
+    };
 }
+
+
 
 function getMousePos(canvas, evt) {
     var rect = canvas.getBoundingClientRect();
