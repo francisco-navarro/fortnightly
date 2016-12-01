@@ -16,12 +16,12 @@ app.scenery.roads = function(){
   ];
 
   function init(){
-    roadX.src = 'roadX.png';
-    roadY.src = 'roadY.png';
-    curve1.src = 'curve1.png';
-    curve2.src = 'curve2.png';
-    curve3.src = 'curve3.png';
-    curve4.src = 'curve4.png';
+    roadX.src = 'images/roadX.png';
+    roadY.src = 'images/roadY.png';
+    curve1.src = 'images/curve1.png';
+    curve2.src = 'images/curve2.png';
+    curve3.src = 'images/curve3.png';
+    curve4.src = 'images/curve4.png';
     
     //  draw(roadsMatrix);
     example();
@@ -59,11 +59,6 @@ app.scenery.roads = function(){
     app.scenery.drawTile(curve4, 3, 6);
     app.scenery.drawTile(roadY, 3, 5);
     app.scenery.drawTile(curve1, 3, 4);
-
-    app.scenery.drawTile(curve1, 5, 7);
-    app.scenery.drawTile(curve2, 6, 7);
-    app.scenery.drawTile(curve3, 6, 8);
-    app.scenery.drawTile(curve4, 5, 8);
 
     app.scenery.drawTile(roadY, 5, 3);
     app.scenery.drawTile(roadY, 5, 4);

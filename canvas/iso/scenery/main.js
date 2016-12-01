@@ -9,7 +9,7 @@ app.scenery = {
       app.scenery.roads();
     }
 
-    function drawTile(image, x, y) {
+    function drawTile(image, x, y, sWidth, sHeight, dx, dy, dWidth, dHeight){
       //Cartesian coords
       var carX = app.conf.offsetX + (size) + size * x;
       var carY = app.conf.offsetY - size + size * y;

@@ -6,7 +6,7 @@ var app = {
 
     if (canvas.getContext) {
       app.ctx = canvas.getContext('2d');
-      app.ctx.font= '8px Georgia';
+      app.ctx.font = '8px Verdana';
       isoDrawUtils();
       //INIT COMPONENTS
       initComponents();
@@ -24,8 +24,9 @@ var app = {
 };
 
 function initComponents(){
-  app.map(9, 9);
+  app.map(12, 12);
   app.scenery.init();
+  app.mobs.cars();
 }
 
 function isoDrawUtils(){

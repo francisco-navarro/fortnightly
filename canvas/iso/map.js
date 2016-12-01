@@ -11,7 +11,7 @@ app.map = function(height, width) {
     //Create a map of n*m positions
     app.conf = {
       offsetX: -300,
-      offsetY: 300,
+      offsetY: 200,
       height: n,
       width: m,
       SQUARE_SIZE: SQUARE_SIZE
@@ -23,7 +23,6 @@ app.map = function(height, width) {
         var y = j * SQUARE_SIZE + app.conf.offsetY;
         mesh(x, y);
         coordText(x + SQUARE_SIZE/2, y + SQUARE_SIZE/2, i, j);
-        //http://www.alcove-games.com/advanced-tutorials/isometric-tile-picking/
       }
     }
   }
@@ -45,7 +44,7 @@ app.map = function(height, width) {
   function coordText(carX, carY, n, m){
     var isoX = carX + carY;
     var isoY = (carY - carX) / 2.0;
-    app.ctx.fillText(n + ',' + m, isoX, isoY);
+    app.ctx.fillText(n + ',' + m, isoX - 5, isoY);
   }
 
   init(height, width);
